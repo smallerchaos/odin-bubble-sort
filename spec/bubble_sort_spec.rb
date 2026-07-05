@@ -7,5 +7,10 @@ RSpec.describe 'Bubble Sort' do
       expected_output = [0,2,2,3,4,78]
       expect(bubble_sort(array_to_sort)).to eq(expected_output)
     end
+    it 'sorts according to Wikipedia example' do
+    array_to_sort = [5,1,4,2,8]
+    expected_output = [1,2,4,5,8]
+    expect(bubble_sort(array_to_sort)).to eq(expected_output)
+    end
   end
 end
