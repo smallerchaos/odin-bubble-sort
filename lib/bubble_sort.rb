@@ -3,7 +3,6 @@ def bubble_sort(array)
   sorted_array = []
 
   loop do
-    puts "***** START LOOP *****"
     working_array = []
 
     if sorted_array == []
@@ -11,45 +10,29 @@ def bubble_sort(array)
     end
 
     while sorted_array.length > 0 do
-      # sort working_array into sorted_array
-      puts "==== START WHILE ===="
-      puts "working_array is"
-      print working_array
-      puts " "
-      puts "sorted_array is"
-      print sorted_array
-      puts " "
-      puts "-----"
+
       if working_array == []
-        puts "working array is empty"
+        # If working_array is empty, direcly add the first item of sorted_array into working_array
         working_array.push(sorted_array.shift)
-      elsif sorted_array == []
       elsif sorted_array[0] < working_array[(working_array.length - 1)]
-        puts "sorted_array[0] = #{sorted_array[0]}"
-        puts "working_array[(working_array.length - 1)] = #{working_array[(working_array.length - 1)]}"
+        # If the last item of working_array is larger than first item in sorted_array, swap to second last position when adding it to working_array
         working_array.insert((working_array.length - 1), sorted_array.shift)
-        puts "working array is now"
-        print working_array
-        puts " "
         has_swapped = true
       else
-        puts "else!"
+        # Else the items are in the correct order so shift it directly into working_array
         working_array.push(sorted_array.shift)
-        puts "working array is now"
-        print working_array
-        puts " "
       end
-      puts "===== END WHILE ====="
     end
+
+    # Assign working_array to sorted_array now that it's done with one pass and before working_array is reset.
     sorted_array = working_array
-    puts "*** before break"
+
     break if has_swapped == false
 
     if has_swapped == true
-      puts "has_swapped = #{has_swapped}"
+      # If items have been swapped, reset the has_swapped flag to false before running the loop again
       has_swapped = false
     end
-    puts "***** END LOOP *****"
     
   end #end of loop
 
